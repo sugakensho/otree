@@ -1,0 +1,21 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Trust Game: Your Choice
+{% endblock %}
+
+{% block content %}
+
+    {% include 'my_trust/Instructions.html' %}
+
+    <p>
+        あなたはプレイヤーBです． プレイヤーAはあなたに {{group.sent_amount}}を渡す決定をしました．
+        and you received {{tripled_amount}}.
+    </p>
+
+    {% formfield group.sent_back_amount with label="あなたはいくらをプレイヤーAに渡しますか？" %}
+
+    {% next_button %}
+
+{% endblock %}

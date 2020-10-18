@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+
+{% if player.id_in_group == 1 %}
+    <p>
+        あなたはプレイヤーBに {{ group.sent_amount }}を渡しました．
+        プレイヤーBはあなたに {{group.sent_back_amount}}を渡しました．
+    </p>
+{% else %}
+    <p>
+        プレイヤーAはあなたに {{ group.sent_amount }}を渡しました．
+        あなたはプレイヤーAに {{group.sent_back_amount}}を渡しました．
+    </p>
+
+{% endif %}
+
+    <p>
+    したがって，あなたの利得は {{ player.payoff }}です．
+    </p>
+
+    {% include 'my_trust/Instructions.html' %}
+
+{% endblock %}
+
+

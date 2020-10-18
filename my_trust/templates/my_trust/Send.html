@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Trust Game: Your Choice
+{% endblock %}
+
+{% block content %}
+
+    {% include 'my_trust/Instructions.html' %}
+
+    <p>
+    あなたはプレイヤーAです．あなたは {{Constants.endowment}}を持っています．
+    </p>
+
+    {% formfield group.sent_amount with label="プレイヤーBに何ポイント渡しますか？" %}
+
+    {% next_button %}
+
+{% endblock %}
