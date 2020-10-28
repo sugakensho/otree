@@ -14,16 +14,16 @@ from otree.api import (
 author = 'Your name here'
 
 doc = """
-Your app description
+信頼ゲーム
 """
 
 
 class Constants(BaseConstants):
     name_in_url = 'my_trust'
-    players_per_group = 2
+    players_per_group = 4
     num_rounds = 1
 
-    endowment = c(10)
+    endowment = c(100)
     multiplication_factor = 3
 
 
@@ -32,15 +32,18 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    sent_amount = models.CurrencyField(choices=currency_range(0, Constants.endowment, c(1)),
-)
+    sent_amount = models.CurrencyField()
     sent_back_amount = models.CurrencyField()
     
-def set_payoffs(self):
-    p1 = self.get_player_by_id(1)
-    p2 = self.get_player_by_id(2)
-    p1.payoff = Constants.endowment - self.sent_amount + self.sent_back_amount
-    p2.payoff = self.sent_amount * Constants.multiplication_factor - self.sent_back_amount
+    sent_amount = models.CurrencyField(
+        choices=currency_range(0, Constants.endowment, c(1)),
+)
+
+    def set_payoffs(self):
+        p1 = self.get_player_by_id(1)
+        p2 = self.get_player_by_id(2)
+        p1.payoff = Constants.endowment - self.sent_amount + self.sent_back_amount
+        p2.payoff = self.sent_amount * Constants.multiplication_factor - self.sent_back_amount
 
 class Player(BasePlayer):
     pass

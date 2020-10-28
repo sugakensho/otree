@@ -1,10 +1,6 @@
-from otree.api import Currency as c, currency_range
-from ._builtin import Page, WaitPage
-from .models import Constants
-
 class Send(Page):
 
-    form_model = 'group'
+    form_model = 'Group'
     form_fields = ['sent_amount']
 
     def is_displayed(self):
@@ -12,7 +8,7 @@ class Send(Page):
 
 class SendBack(Page):
 
-    form_model = 'group'
+    form_model = 'Group'
     form_fields = ['sent_back_amount']
 
     def is_displayed(self):

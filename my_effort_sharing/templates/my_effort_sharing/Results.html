@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Page title
+{% endblock %}
+
+{% block content %}
+
+<p>
+    あなたはこの競争で {{ group.effort_amount }}だけ努力を行いました．
+    報酬として {{ player.payoff }}を貰いました．
+</p>
+
+{% include 'my_effort_sharing/Instructions.html' %}
+
+    {% next_button %}
+{% endblock %}
+
+

@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %} Results {% endblock %}
+
+{% block content %}
+
+<p>
+    あなたの初期保有額は {{ Constants.endowment }}です．
+    その中から {{ player.contribution }}を貢献しました．
+    あなたのグループ全体では {{ group.total_contribution }}が貢献されました．
+    その結果，各個人には{{ group.individual_share }}が分配されます．
+    したがって，あなたの利得は {{ player.payoff }}です．
+</p>
+
+{% next_button %}
+
+{% endblock %}
+
+

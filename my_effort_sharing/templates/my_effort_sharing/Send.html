@@ -1,0 +1,21 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    effor_share :
+{% endblock %}
+
+{% block content %}
+
+    {% include 'my_effort_sharing/Instructions.html' %}
+
+    <p>
+    あなたはプレイヤーAです．あなたは {{Constants.max_effort}}まで努力できます。（例）
+    </p>
+
+    {% formfield group.effort_amount with label="どれだけ努力を行いますか？" %}
+
+    {% next_button %}
+
+{% endblock %}
+</html>

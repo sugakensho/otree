@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %} Contribute {% endblock %}
+
+{% block content %}
+
+<p>
+    これは1グループあたり{{ Constants.players_per_group }} 人の公共財ゲームです．,
+    初期保有額は {{ Constants.endowment }}であり，
+    全プレイヤーの貢献額の合計が {{ Constants.multiplier }}倍されて，各プレイヤーに平等に分配されます．
+</p>
+
+
+{% formfield player.contribution with label="How much will you contribute?" %}
+
+{% next_button %}
+
+{% endblock %}

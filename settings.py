@@ -9,10 +9,10 @@ SESSION_CONFIGS = [
         app_sequence=['public_goods', 'payment_info'],
     ),
     dict(
-        name='guess_two_thirds',
-        display_name="Guess 2/3 of the Average",
-        num_demo_participants=3,
-        app_sequence=['guess_two_thirds', 'payment_info'],
+        name='matching_pennies',
+        display_name="matching_pennies",
+        num_demo_participants=2,
+        app_sequence=['matching_pennies', 'payment_info'],
     ),
     dict(
         name='survey',
@@ -21,13 +21,28 @@ SESSION_CONFIGS = [
         app_sequence=['survey', 'payment_info'],
     ),
 
-    
-    dict(
-        name='my_trust',
-        display_name="My Trust Game (simple version from tutorial)",
-        num_demo_participants=2,
-        app_sequence=['my_trust'],
-    )
+
+  {
+    'name': 'my_trust',
+    'display_name': "My Trust Game (simple version from tutorial)",
+    'num_demo_participants': 2,
+    'app_sequence': ['my_trust'],
+  },
+
+    {
+    'name': 'my_effort_sharing',
+    'display_name': "Effort Game",
+    'num_demo_participants': 4,
+    'app_sequence': ['my_effort_sharing'],
+    },  
+  
+    {
+    'name': 'my_public_goods',
+    'display_name': "My Public Goods (Simple Version)",
+    'num_demo_participants': 3,
+    'app_sequence': ['my_public_goods', 'survey', 'payment_info'],
+    'use_browser_bots': True
+    },
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
