@@ -16,7 +16,9 @@ class ResultsWaitPage(WaitPage):
 
 
 class Results(Page):
-    pass
+
+    def total_player_payoff(self):
+        self.participant.payoff
 
 
 page_sequence = [Send, ResultsWaitPage, Results]

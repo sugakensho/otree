@@ -8,8 +8,12 @@
 {% block content %}
 
 <p>
-    あなたはこの競争で {{ group.effort_amount }}だけ努力を行いました．
+    あなたはこの競争で {{ player.effort_amount }}だけ努力を行いました．
     報酬として {{ player.payoff }}を貰いました．
+</p>
+
+<p>
+    あなたはこの競争で合計 {{participant.payoff}} の報酬を貰いました．
 </p>
 
 {% include 'my_effort_sharing/Instructions.html' %}

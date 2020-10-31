@@ -35,6 +35,13 @@ SESSION_CONFIGS = [
     'num_demo_participants': 4,
     'app_sequence': ['my_effort_sharing'],
     },  
+
+    {
+    'name': 'guess_two_thirds',
+    'display_name': "guess_two_thirds",
+    'num_demo_participants': 3,
+    'app_sequence': ['guess_two_thirds'],
+    },  
   
     {
     'name': 'my_public_goods',
@@ -59,8 +66,8 @@ SESSION_CONFIG_DEFAULTS = dict(
 LANGUAGE_CODE = 'en'
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'USD'
-USE_POINTS = True
+REAL_WORLD_CURRENCY_CODE = 'JPY'
+USE_POINTS = False
 
 ROOMS = [
     dict(
