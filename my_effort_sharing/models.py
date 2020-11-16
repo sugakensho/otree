@@ -22,7 +22,7 @@ class Constants(BaseConstants):
     players_per_group = 4
     num_rounds = 5
 
-    max_effort = c(100)
+    max_effort = (100)
 
     #変数の定義
     random_numbers = 40 
@@ -34,7 +34,9 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    pass
+        def creating_session(self):
+        
+            self.group_randomly(fixed_id_in_group=True)
 
 
 class Group(BaseGroup):
@@ -58,6 +60,18 @@ class Group(BaseGroup):
         if team_type == 1 :
             team1_yeild = p1_yeild + p3_yeild
             team2_yeild = p2_yeild + p4_yeild
+            p1.team = 1
+            p1.team_members_yeild = p3_yeild
+            p2.team = 2
+            p2.team_members_yeild = p4_yeild
+            p3.team = 1
+            p3.team_members_yeild = p1_yeild
+            p4.team = 2
+            p4.team_members_yeild = p2_yeild
+            p1.team_member = 3
+            p2.team_member = 4
+            p3.team_member = 1
+            p4.team_member = 2
 
 
             if team1_yeild > team2_yeild :
@@ -81,6 +95,18 @@ class Group(BaseGroup):
         else :
             team1_yeild = p1_yeild + p4_yeild
             team2_yeild = p2_yeild + p3_yeild
+            p1.team = 1
+            p1.team_members_yeild = p4_yeild
+            p2.team = 2
+            p2.team_members_yeild = p3_yeild
+            p3.team = 2
+            p3.team_members_yeild = p2_yeild
+            p4.team = 1
+            p4.team_members_yeild = p1_yeild
+            p1.team_member = 4
+            p2.team_member = 3
+            p3.team_member = 2
+            p4.team_member = 1
 
             if team1_yeild > team2_yeild :
                 p1.payoff = Constants.reward_high - p1.effort_amount * p1.effort_amount * 0.01
@@ -103,8 +129,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    effort_amount = models.CurrencyField()
-
-    effort_amount = models.CurrencyField(
-        choices=currency_range(0, Constants.max_effort, c(1)),
-    )
+    team = models.IntegerField(initial=0)
+    team_member = models.IntegerField(initial=0)
+    team_members_yeild = models.FloatField(initial=0)
+    effort_amount = models.IntegerField(min=0, max=100)

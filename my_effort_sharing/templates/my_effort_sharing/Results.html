@@ -8,8 +8,10 @@
 {% block content %}
 
 <p>
-    あなたはこの競争で {{ player.effort_amount }}だけ努力を行いました．
-    報酬として {{ player.payoff }}を貰いました．
+    あなたはこの競争で {{ player.effort_amount }}だけ努力を行いました．<br>
+    報酬として {{ player.payoff }}を貰いました．<br>
+    あなたのチームメイトはプレイヤー{{ player.team_member }}さんで、<br>
+    彼（彼女）の売上は{{　player.team_members_yeild }}でした。<br>
 </p>
 
 <p>
