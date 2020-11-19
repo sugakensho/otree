@@ -1,0 +1,52 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Page title
+{% endblock %}
+
+{% block content %}
+
+{% if player.id_in_group == 1 or player.id_in_group == 2 %}
+
+<p>
+    あなたはこの競争で {{ player.effort_amount }}だけ努力を行いました．<br>
+    あなたのチームメイトはプレイヤー{{ player.team_member }}さんで、<br>
+    彼（彼女）の成果（シェアした分を除く）は{{　player.team_members_yeild }}でした。<br>
+    <br>
+    あなたはチームメンバーから{{ player.effort_sharing_amount }}分努力をシェアしてもらいました。<br>
+    結果あなたの成果の合計は{{ player.yeild }}でした。<br>
+    <br>
+    報酬として {{ player.payoff }}を貰いました．<br>
+</p>
+
+<p>
+    あなたはこの競争で合計 {{participant.payoff}} の報酬を貰っています．
+</p>
+
+{% else %}
+
+<p>
+    あなたはこの競争で {{ player.effort_amount }}だけ努力を行いました．<br>
+    あなたのチームメイトはプレイヤー{{ player.team_member }}さんで、<br>
+    彼（彼女）の成果（シェアした分を含む）は{{　player.team_members_yeild }}でした。<br>
+    <br>
+    あなたはチームメンバーに{{ player.effort_sharing_amount }}分努力をシェアしました。<br>
+    結果あなたの成果の合計は{{ player.yeild }}でした。<br>
+    <br>
+    報酬として {{ player.payoff }}を貰いました．<br>
+</p>
+
+<p>
+    あなたはこの競争で合計 {{participant.payoff}} の報酬を貰っています．
+</p>
+
+{% endif %}
+
+
+
+{% include 'my_effort_sharing_MAX_v25/Instructions.html' %}
+
+    {% next_button %}
+
+{% endblock %}

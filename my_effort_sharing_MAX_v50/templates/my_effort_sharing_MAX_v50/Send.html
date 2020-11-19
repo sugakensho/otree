@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    effor_share :
+{% endblock %}
+
+{% block content %}
+
+    {% include 'my_effort_sharing_MAX_v50/Instructions.html' %}
+
+{% if player.id_in_group == 1 or player.id_in_group == 2 %}
+
+    <p>
+    あなたは {{Constants.max_effort}}まで努力できます。
+    またあなたの結果には、メンバーの努力量のうち25%が追加されます。
+    </p>
+
+    {% formfield group.effort_amount with label="どれだけ努力を行いますか？" %}
+
+{% else %}
+
+    <p>
+    あなたは {{Constants.max_effort}}まで努力できます。
+    またあなたの努力のうち、25%はメンバーにシェアされます。
+    </p>
+
+    {% formfield group.effort_amount with label="どれだけ努力を行いますか？" %}
+
+{% endif %}
+
+    {% next_button %}
+
+{% endblock %}
+</html>

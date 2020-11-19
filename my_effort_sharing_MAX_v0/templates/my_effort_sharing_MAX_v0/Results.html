@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Page title
+{% endblock %}
+
+{% block content %}
+
+<p>
+    あなたはこの競争で {{ player.effort_amount }}だけ努力を行いました．<br>
+    結果あなたの成果は{{player.yeild}}でした。
+
+    あなたのチームメイトはプレイヤー{{ player.team_member }}さんで、<br>
+    彼（彼女）の成果は{{　player.team_members_yeild }}でした。<br>
+
+    報酬として {{ player.payoff }}を貰いました．<br>
+</p>
+
+<p>
+    あなたはこの競争で合計 {{participant.payoff}} の報酬を貰いました．
+</p>
+
+{% include 'my_effort_sharing_MAX_v0/Instructions.html' %}
+
+    {% next_button %}
+{% endblock %}
+
+
