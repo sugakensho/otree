@@ -26,7 +26,7 @@ class Constants(BaseConstants):
 
     #変数の定義
     random_numbers = 40 
-    reward_low = 70
+    reward_low = 40
     reward_even = 50
     reward_high = 140
     endowment1 = 40
@@ -53,10 +53,10 @@ class Group(BaseGroup):
         team_type = random.randint(1,2)
 
         if team_type == 1 :
-            p1.yeild = p1.effort_amount + p3.effort_amount*0.25 + Constants.endowment1 +  random.uniform(0,40) 
-            p2.yeild = p2.effort_amount + p4.effort_amount*0.25 + Constants.endowment1 +  random.uniform(0,40) 
-            p3.yeild = p3.effort_amount*0.75 + Constants.endowment2 +  random.uniform(0,40) 
-            p4.yeild = p4.effort_amount*0.75 + Constants.endowment2 +  random.uniform(0,40) 
+            p1.yeild = p1.effort_amount + p3.effort_amount*0.25 + Constants.endowment1 +  random.uniform(-50,50) 
+            p2.yeild = p2.effort_amount + p4.effort_amount*0.25 + Constants.endowment1 +  random.uniform(-50,50) 
+            p3.yeild = p3.effort_amount*0.75 + Constants.endowment2 +  random.uniform(-50,50) 
+            p4.yeild = p4.effort_amount*0.75 + Constants.endowment2 +  random.uniform(-50,50) 
 
             team1_yeild = max(p1.yeild,p3.yeild)
             team2_yeild = max(p2.yeild,p4.yeild)
@@ -100,10 +100,10 @@ class Group(BaseGroup):
                 p4.payoff = Constants.reward_high - p4.effort_amount * p4.effort_amount * 0.01
 
         else :
-            p1.yeild = p1.effort_amount + p4.effort_amount*0.25 + Constants.endowment1 +  random.uniform(0,40) 
-            p2.yeild = p2.effort_amount + p3.effort_amount*0.25 + Constants.endowment1 +  random.uniform(0,40) 
-            p3.yeild = p3.effort_amount*0.75 + Constants.endowment2 +  random.uniform(0,40) 
-            p4.yeild = p4.effort_amount*0.75 + Constants.endowment2 +  random.uniform(0,40) 
+            p1.yeild = p1.effort_amount + p4.effort_amount*0.25 + Constants.endowment1 +  random.uniform(-50,50) 
+            p2.yeild = p2.effort_amount + p3.effort_amount*0.25 + Constants.endowment1 +  random.uniform(-50,50) 
+            p3.yeild = p3.effort_amount*0.75 + Constants.endowment2 +  random.uniform(-50,50) 
+            p4.yeild = p4.effort_amount*0.75 + Constants.endowment2 +  random.uniform(-50,50) 
             
             team1_yeild = max(p1.yeild,p4.yeild)
             team2_yeild = max(p2.yeild,p3.yeild)

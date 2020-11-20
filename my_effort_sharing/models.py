@@ -80,17 +80,33 @@ class Group(BaseGroup):
                 p3.payoff = Constants.reward_high - p3.effort_amount * p3.effort_amount * 0.01
                 p4.payoff = Constants.reward_low - p4.effort_amount * p4.effort_amount * 0.01
 
+                p1.payoff = max(p1.payoff,0)
+                p2.payoff = max(p2.payoff,0)
+                p3.payoff = max(p3.payoff,0)
+                p4.payoff = max(p4.payoff,0)
+
             elif team1_yeild == team2_yeild :
                 p1.payoff = Constants.reward_even - p1.effort_amount * p1.effort_amount * 0.01
                 p2.payoff = Constants.reward_even - p2.effort_amount * p2.effort_amount * 0.01
                 p3.payoff = Constants.reward_even - p3.effort_amount * p3.effort_amount * 0.01
                 p4.payoff = Constants.reward_even - p4.effort_amount * p4.effort_amount * 0.01
 
+                p1.payoff = max(p1.payoff,0)
+                p2.payoff = max(p2.payoff,0)
+                p3.payoff = max(p3.payoff,0)
+                p4.payoff = max(p4.payoff,0)
+
             else :
                 p1.payoff = Constants.reward_low - p1.effort_amount * p1.effort_amount * 0.01
                 p2.payoff = Constants.reward_high - p2.effort_amount * p2.effort_amount * 0.01
                 p3.payoff = Constants.reward_low - p3.effort_amount * p3.effort_amount * 0.01
                 p4.payoff = Constants.reward_high - p4.effort_amount * p4.effort_amount * 0.01
+
+                p1.payoff = max(p1.payoff,0)
+                p2.payoff = max(p2.payoff,0)
+                p3.payoff = max(p3.payoff,0)
+                p4.payoff = max(p4.payoff,0)
+
 
         else :
             team1_yeild = p1_yeild + p4_yeild
@@ -114,17 +130,33 @@ class Group(BaseGroup):
                 p3.payoff = Constants.reward_low - p3.effort_amount * p3.effort_amount * 0.01
                 p4.payoff = Constants.reward_high - p4.effort_amount * p4.effort_amount * 0.01
 
+                p1.payoff = max(p1.payoff,0)
+                p2.payoff = max(p2.payoff,0)
+                p3.payoff = max(p3.payoff,0)
+                p4.payoff = max(p4.payoff,0)
+
+
             elif team1_yeild == team2_yeild :
                 p1.payoff = Constants.reward_even - p1.effort_amount * p1.effort_amount * 0.01
                 p2.payoff = Constants.reward_even - p2.effort_amount * p2.effort_amount * 0.01
                 p3.payoff = Constants.reward_even - p3.effort_amount * p3.effort_amount * 0.01
                 p4.payoff = Constants.reward_even - p4.effort_amount * p4.effort_amount * 0.01
 
+                p1.payoff = max(p1.payoff,0)
+                p2.payoff = max(p2.payoff,0)
+                p3.payoff = max(p3.payoff,0)
+                p4.payoff = max(p4.payoff,0)
+
             else :
                 p1.payoff = Constants.reward_low - p1.effort_amount * p1.effort_amount * 0.01
                 p2.payoff = Constants.reward_high - p2.effort_amount * p2.effort_amount * 0.01
                 p3.payoff = Constants.reward_high - p3.effort_amount * p3.effort_amount * 0.01
                 p4.payoff = Constants.reward_low - p4.effort_amount * p4.effort_amount * 0.01
+                
+                p1.payoff = max(p1.payoff,0)
+                p2.payoff = max(p2.payoff,0)
+                p3.payoff = max(p3.payoff,0)
+                p4.payoff = max(p4.payoff,0)
 
 
 

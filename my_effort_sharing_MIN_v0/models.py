@@ -26,7 +26,7 @@ class Constants(BaseConstants):
 
     #変数の定義
     random_numbers = 40 
-    reward_low = 70
+    reward_low = 40
     reward_even = 50
     reward_high = 140
     endowment1 = 40
@@ -50,10 +50,10 @@ class Group(BaseGroup):
         p3 = self.get_player_by_id(3)
         p4 = self.get_player_by_id(4)
 
-        p1.yeild = p1.effort_amount + Constants.endowment1 +  random.uniform(0,40) 
-        p2.yeild = p2.effort_amount + Constants.endowment1 +  random.uniform(0,40) 
-        p3.yeild = p3.effort_amount + Constants.endowment2 +  random.uniform(0,40) 
-        p4.yeild = p4.effort_amount + Constants.endowment2 +  random.uniform(0,40) 
+        p1.yeild = p1.effort_amount + Constants.endowment1 +  random.uniform(-50,50) 
+        p2.yeild = p2.effort_amount + Constants.endowment1 +  random.uniform(-50,50) 
+        p3.yeild = p3.effort_amount + Constants.endowment2 +  random.uniform(-50,50) 
+        p4.yeild = p4.effort_amount + Constants.endowment2 +  random.uniform(-50,50) 
 
         team_type = random.randint(1,2)
 

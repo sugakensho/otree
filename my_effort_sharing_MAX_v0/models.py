@@ -20,14 +20,14 @@ doc = """
 class Constants(BaseConstants):
     name_in_url = 'my_effort_sharing_MAX_v0'
     players_per_group = 4
-    num_rounds = 5
+    num_rounds = 15
 
     max_effort = (100)
 
     #変数の定義
     random_numbers = 40 
-    reward_low = 70
-    reward_even = 50
+    reward_low = 40
+    reward_even = 90
     reward_high = 140
     endowment1 = 40
     endowment2 = 0
@@ -50,24 +50,27 @@ class Group(BaseGroup):
         p3 = self.get_player_by_id(3)
         p4 = self.get_player_by_id(4)
 
-        p1.yeild = p1.effort_amount + Constants.endowment1 +  random.uniform(0,40) 
-        p2.yeild = p2.effort_amount + Constants.endowment1 +  random.uniform(0,40) 
-        p3.yeild = p3.effort_amount + Constants.endowment2 +  random.uniform(0,40) 
-        p4.yeild = p4.effort_amount + Constants.endowment2 +  random.uniform(0,40) 
+        p1.yeild = p1.effort_amount + Constants.endowment1 +  random.uniform(-50,50) 
+        p2.yeild = p2.effort_amount + Constants.endowment1 +  random.uniform(-50,50) 
+        p3.yeild = p3.effort_amount + Constants.endowment2 +  random.uniform(-50,50) 
+        p4.yeild = p4.effort_amount + Constants.endowment2 +  random.uniform(-50,50) 
 
         team_type = random.randint(1,2)
 
         if team_type == 1 :
             team1_yeild = max(p1.yeild,p3.yeild)
             team2_yeild = max(p2.yeild,p4.yeild)
+
             p1.team = 1
-            p1.team_members_yeild = p3.yeild
             p2.team = 2
-            p2.team_members_yeild = p4.yeild
             p3.team = 1
-            p3.team_members_yeild = p1.yeild
             p4.team = 2
+        
+            p1.team_members_yeild = p3.yeild
+            p2.team_members_yeild = p4.yeild
+            p3.team_members_yeild = p1.yeild
             p4.team_members_yeild = p2.yeild
+
             p1.team_member = 3
             p2.team_member = 4
             p3.team_member = 1
@@ -95,14 +98,17 @@ class Group(BaseGroup):
         else :
             team1_yeild = max(p1.yeild,p4.yeild)
             team2_yeild = max(p2.yeild,p3.yeild)
+            
             p1.team = 1
-            p1.team_members_yeild = p4.yeild
             p2.team = 2
-            p2.team_members_yeild = p3.yeild
             p3.team = 2
-            p3.team_members_yeild = p2.yeild
             p4.team = 1
+
+            p1.team_members_yeild = p4.yeild
+            p2.team_members_yeild = p3.yeild
+            p3.team_members_yeild = p2.yeild
             p4.team_members_yeild = p1.yeild
+
             p1.team_member = 4
             p2.team_member = 3
             p3.team_member = 2
