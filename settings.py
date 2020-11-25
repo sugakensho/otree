@@ -30,26 +30,55 @@ SESSION_CONFIGS = [
   },
 
     {
+    'name': 'my_effort_sharing_MAX_v0',
+    'display_name': "Effort Game MAX_v0",
+    'num_demo_participants': 4,
+    'app_sequence': ['my_effort_sharing_MAX_v0'],
+    },  
+
+    {
+    'name': 'my_effort_sharing_MAX_v25',
+    'display_name': "Effort Game MAX_v25",
+    'num_demo_participants': 4,
+    'app_sequence': ['my_effort_sharing_MAX_v25'],
+    },  
+  
+
+    {
+    'name': 'my_effort_sharing_MAX_v50',
+    'display_name': "Effort Game MAX_v50",
+    'num_demo_participants': 4,
+    'app_sequence': ['my_effort_sharing_MAX_v50'],
+    },  
+
+   {
+    'name': 'my_effort_sharing_MIN_v0',
+    'display_name': "Effort Game MIN_v0",
+    'num_demo_participants': 4,
+    'app_sequence': ['my_effort_sharing_MIN_v0'],
+    },  
+
+    {
+    'name': 'my_effort_sharing_MIN_v25',
+    'display_name': "Effort Game MIN_v25",
+    'num_demo_participants': 4,
+    'app_sequence': ['my_effort_sharing_MIN_v25'],
+    },  
+  
+
+    {
+    'name': 'my_effort_sharing_MIN_v50',
+    'display_name': "Effort Game MIN_v50",
+    'num_demo_participants': 4,
+    'app_sequence': ['my_effort_sharing_MIN_v50'],
+    },  
+
+    {
     'name': 'my_effort_sharing',
     'display_name': "Effort Game",
     'num_demo_participants': 4,
     'app_sequence': ['my_effort_sharing'],
     },  
-
-    {
-    'name': 'guess_two_thirds',
-    'display_name': "guess_two_thirds",
-    'num_demo_participants': 3,
-    'app_sequence': ['guess_two_thirds'],
-    },  
-  
-    {
-    'name': 'my_public_goods',
-    'display_name': "My Public Goods (Simple Version)",
-    'num_demo_participants': 3,
-    'app_sequence': ['my_public_goods', 'survey', 'payment_info'],
-    'use_browser_bots': True
-    },
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
