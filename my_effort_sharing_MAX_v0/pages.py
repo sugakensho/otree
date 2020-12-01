@@ -3,6 +3,11 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
+class Explanation(Page):
+    pass
+    
+    
+
 class Send(Page):
     
     form_model = 'player'
@@ -21,4 +26,4 @@ class Results(Page):
         self.participant.payoff
 
 
-page_sequence = [Send, ResultsWaitPage, Results]
+page_sequence = [Explanation, Send, ResultsWaitPage, Results]

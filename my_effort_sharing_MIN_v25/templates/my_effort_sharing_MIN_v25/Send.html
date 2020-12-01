@@ -7,13 +7,15 @@
 
 {% block content %}
 
-    {% include 'my_effort_sharing_MIN_v25/Instructions.html' %}
-
 {% if player.id_in_group == 1 or player.id_in_group == 2 %}
 
     <p>
+    <font size="5"><b>あなたはタイプ１です。</b></font><br>
+    （あなたの成果には４０点が追加され、チームメンバーには点数の追加はありません。）<br>
+    </p>
+    <p>
     あなたは {{Constants.max_effort}}まで努力できます。
-    またあなたの努力のうち、50%はメンバーにシェアされます。
+    <b>またあなたの努力のうち、２５％はチームメイトにシェアされます。</b>
     </p>
 
     {% formfield group.effort_amount with label="どれだけ努力を行いますか？" %}
@@ -21,15 +23,22 @@
 {% else %}
 
     <p>
+    <font size="5"><b>あなたはタイプ２です。</b></font>
+    （あなたの成果には点が追加されず、チームメンバーには４０点が追加されます。）
+    </p>
+    <p>
     あなたは {{Constants.max_effort}}まで努力できます。
-    またあなたの成果には、メンバーの努力量のうち25%がシェアされます。
+    <b>またあなたの成果には、チームメイトの努力うち２５％がシェアされます。</b>
     </p>
 
     {% formfield group.effort_amount with label="どれだけ努力を行いますか？" %}
 
-{% endif %}
 
     {% next_button %}
+
+{% endif %}
+
+{% include 'my_effort_sharing_MIN_v25/Instructions.html' %}
 
 {% endblock %}
 </html>
