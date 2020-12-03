@@ -4,9 +4,9 @@ from .models import Constants
 
 
 class Explanation(Page):
-    pass
-    
-    
+    def is_displayed(self):
+        return self.round_number == 1
+
 
 class Send(Page):
     

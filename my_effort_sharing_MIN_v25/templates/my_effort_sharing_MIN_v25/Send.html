@@ -2,43 +2,49 @@
 {% load staticfiles otree_tags %}
 
 {% block title %}
-    effor_share :
+    ラウンド :
 {% endblock %}
 
 {% block content %}
+
+{% include 'my_effort_sharing_MIN_v25/Instructions.html' %}
 
 {% if player.id_in_group == 1 or player.id_in_group == 2 %}
 
     <p>
     <font size="5"><b>あなたはタイプ１です。</b></font><br>
-    （あなたの成果には４０点が追加され、チームメンバーには点数の追加はありません。）<br>
+    タイプ１の成果＝努力量  × (1−分配率) ＋能力値 ＋ 外部要因<br>
+    <br>
+    分配率は２５% です。<br>
+    能力値はタイプ１には ４０ が、タイプ２には０が割り当てられます。<br>
+    外部要因は[-50~50]の間で毎回ランダムに割り当てられます。<br>
     </p>
     <p>
-    あなたは {{Constants.max_effort}}まで努力できます。
-    <b>またあなたの努力のうち、２５％はチームメイトにシェアされます。</b>
+    努力量を {{Constants.max_effort}}[0~100(半角で入力)]の整数から選択してください。
     </p>
 
-    {% formfield group.effort_amount with label="どれだけ努力を行いますか？" %}
+    {% formfield group.effort_amount with label="努力量の選択[0~100(半角で入力)]の整数" %}
 
 {% else %}
 
     <p>
-    <font size="5"><b>あなたはタイプ２です。</b></font>
-    （あなたの成果には点が追加されず、チームメンバーには４０点が追加されます。）
+    <font size="5"><b>あなたはタイプ２です。</b></font><br>
+    タイプ２の成果＝ 努力量  ＋ 能力値 ＋ 外部要因 +タイプ１の努力量 × (分配率)<br>
+    <br>
+    分配率は25です。
+    能力値はタイプ１には ４０ が、タイプ２には０が割り当てられます。<br>
+    外部要因は[-50~50]の間で毎回ランダムに割り当てられます<br>
     </p>
     <p>
-    あなたは {{Constants.max_effort}}まで努力できます。
-    <b>またあなたの成果には、チームメイトの努力うち２５％がシェアされます。</b>
+    努力量を {{Constants.max_effort}}[0~100(半角で入力)]の整数から選択してください。<br>
     </p>
 
-    {% formfield group.effort_amount with label="どれだけ努力を行いますか？" %}
+    {% formfield group.effort_amount with label="努力量の選択[0~100(半角で入力)]の整数" %}
 
 
     {% next_button %}
 
 {% endif %}
-
-{% include 'my_effort_sharing_MIN_v25/Instructions.html' %}
 
 {% endblock %}
 </html>
