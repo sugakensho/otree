@@ -8,20 +8,18 @@
 {% block content %}
 
 <p>
-    あなたはこの競争で {{ player.effort_amount }}だけ努力を行いました．<br>
-    結果あなたの成果は{{player.yeild}}でした。
+    あなたはこの競争で<font size="6">{{ player.effort_amount }}</font> 努力を行いました．<br>
+    結果あなたの成果は<font size="6">{{player.yeild|floatformat}}</font>でした。
 
-    あなたのチームメイトはプレイヤー{{ player.team_member }}さんで、<br>
-    彼（彼女）の成果は{{　player.team_members_yeild }}でした。<br>
+    あなたのチームメイトはプレイヤー<font size="6">{{ player.team_member }}</font>さんで、<br>
+    彼（彼女）の成果は<font size="6">{{ player.team_members_yeild|floatformat }}</font>でした。<br>
 
-    報酬として {{ player.payoff }}を貰いました．<br>
+    報酬として <font size="6">{{ player.payoff }}</font>を貰いました．<br>
 </p>
 
 <p>
-    あなたはこの競争で合計 {{participant.payoff}} の報酬を貰いました．
+    あなたはこの競争で合計 <font size="6">{{participant.payoff}}</font> の報酬を貰いました．
 </p>
-
-{% include 'my_effort_sharing_MIN_v0/Instructions.html' %}
 
     {% next_button %}
 {% endblock %}
