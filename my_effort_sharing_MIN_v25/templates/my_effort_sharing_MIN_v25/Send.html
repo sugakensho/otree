@@ -7,44 +7,43 @@
 
 {% block content %}
 
-{% include 'my_effort_sharing_MIN_v25/Instructions.html' %}
-
 {% if player.id_in_group == 1 or player.id_in_group == 2 %}
 
     <p>
     <font size="5"><b>あなたはタイプ１です。</b></font><br>
-    タイプ１の成果＝努力量  × (1−分配率) ＋能力値 ＋ 外部要因<br>
-    <br>
-    分配率は２５% です。<br>
-    能力値はタイプ１には ４０ が、タイプ２には０が割り当てられます。<br>
-    外部要因は[-50~50]の間で毎回ランダムに割り当てられます。<br>
-    </p>
     <p>
-    努力量を {{Constants.max_effort}}[0~100(半角で入力)]の整数から選択してください。
+    努力量を [0~100(半角で入力)の整数]で入力してください。
     </p>
+       
+    <p>
+    報酬の決定方法に不安がある方は、以下の詳細をご覧ください。   
+    </p>
+    {% formfield group.effort_amount with label="努力量を[0~100(半角で入力)]の整数で入力" %}
+    
+    {% next_button %}
 
-    {% formfield group.effort_amount with label="努力量の選択[0~100(半角で入力)]の整数" %}
 
 {% else %}
 
     <p>
     <font size="5"><b>あなたはタイプ２です。</b></font><br>
-    タイプ２の成果＝ 努力量  ＋ 能力値 ＋ 外部要因 +タイプ１の努力量 × (分配率)<br>
-    <br>
-    分配率は25です。
-    能力値はタイプ１には ４０ が、タイプ２には０が割り当てられます。<br>
-    外部要因は[-50~50]の間で毎回ランダムに割り当てられます<br>
+    努力量を[0~100(半角で入力)の整数]で入力してください。<br>
     </p>
+   
     <p>
-    努力量を {{Constants.max_effort}}[0~100(半角で入力)の整数]から入力してください。<br>
+    報酬の決定方法に不安がある方は、以下の詳細をご覧ください。   
     </p>
-
-    {% formfield group.effort_amount with label="努力量の入力[0~100(半角で入力)の整数]" %}
-
-
+    
+    {% formfield group.effort_amount with label="努力量を[0~100(半角で入力)]の整数で入力" %}
+    
+    
     {% next_button %}
 
+
 {% endif %}
+
+
+{% include 'my_effort_sharing_MIN_v25/Instructions.html' %}
 
 {% endblock %}
 </html>
