@@ -20,7 +20,7 @@ doc = """
 class Constants(BaseConstants):
     name_in_url = 'my_effort_sharing_MIN_v25'
     players_per_group = 4
-    num_rounds = 5
+    num_rounds = 15
 
     max_effort = (100)
 
@@ -53,10 +53,16 @@ class Group(BaseGroup):
         team_type = random.randint(1,2)
 
         if team_type == 1 :
-            p1.yeild = p1.effort_amount*0.75 + Constants.endowment1 +  random.uniform(-50,50) 
-            p2.yeild = p2.effort_amount*0.75 + Constants.endowment1 +  random.uniform(-50,50) 
-            p3.yeild = p3.effort_amount + p1.effort_amount*0.25 + Constants.endowment2 +  random.uniform(-50,50) 
-            p4.yeild = p4.effort_amount + p2.effort_amount*0.25 + Constants.endowment2 +  random.uniform(-50,50) 
+            p1.demand_shock = random.uniform(-50,50) 
+            p2.demand_shock = random.uniform(-50,50)
+            p3.demand_shock = random.uniform(-50,50)
+            p4.demand_shock = random.uniform(-50,50)
+
+
+            p1.yeild = p1.effort_amount*0.75 + Constants.endowment1 +  p1.demand_shock
+            p2.yeild = p2.effort_amount*0.75 + Constants.endowment1 +  p2.demand_shock
+            p3.yeild = p3.effort_amount + p1.effort_amount*0.25 + Constants.endowment2 +  p3.demand_shock
+            p4.yeild = p4.effort_amount + p2.effort_amount*0.25 + Constants.endowment2 +  p4.demand_shock
 
             team1_yeild = min(p1.yeild,p3.yeild)
             team2_yeild = min(p2.yeild,p4.yeild)
@@ -100,10 +106,16 @@ class Group(BaseGroup):
                 p4.payoff = Constants.reward_high - p4.effort_amount * p4.effort_amount * 0.01
 
         else :
-            p1.yeild = p1.effort_amount*0.75 + Constants.endowment1 +  random.uniform(-50,50) 
-            p2.yeild = p2.effort_amount*0.75 + Constants.endowment1 +  random.uniform(-50,50) 
-            p3.yeild = p3.effort_amount + p2.effort_amount*0.25 + Constants.endowment2 +  random.uniform(-50,50) 
-            p4.yeild = p4.effort_amount + p1.effort_amount*0.25 + Constants.endowment2 +  random.uniform(-50,50) 
+            p1.demand_shock = random.uniform(-50,50) 
+            p2.demand_shock = random.uniform(-50,50)
+            p3.demand_shock = random.uniform(-50,50)
+            p4.demand_shock = random.uniform(-50,50)
+
+
+            p1.yeild = p1.effort_amount*0.75 + Constants.endowment1 +  p1.demand_shock
+            p2.yeild = p2.effort_amount*0.75 + Constants.endowment1 +  p2.demand_shock
+            p3.yeild = p3.effort_amount + p2.effort_amount*0.25 + Constants.endowment2 +  p3.demand_shock 
+            p4.yeild = p4.effort_amount + p1.effort_amount*0.25 + Constants.endowment2 +  p4.demand_shock 
             
             team1_yeild = min(p1.yeild,p4.yeild)
             team2_yeild = min(p2.yeild,p3.yeild)
@@ -150,9 +162,9 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     effort_amount = models.IntegerField(min=0, max=100)
-    yeild = models.FloatField(initial=0)
-
+    demand_shock = models.FloatField(initial=0)
     effort_sharing_amount = models.FloatField(initial=0)
+    yeild = models.FloatField(initial=0)
 
     team = models.IntegerField(initial=0)
     team_member = models.IntegerField(initial=0)
