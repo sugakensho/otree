@@ -29,8 +29,6 @@ class Constants(BaseConstants):
     reward_low = 40
     reward_even = 50
     reward_high = 140
-    endowment1 = 40
-    endowment2 = 0
 
 
 class Subsession(BaseSubsession):
@@ -58,11 +56,16 @@ class Group(BaseGroup):
             p3.demand_shock = random.uniform(-50,50)
             p4.demand_shock = random.uniform(-50,50)
 
+            p1.endowment = 40
+            p2.endowment = 40
+            p3.endowment = 0
+            p4.endowment = 0
 
-            p1.yeild = p1.effort_amount*0.75 + Constants.endowment1 +  p1.demand_shock
-            p2.yeild = p2.effort_amount*0.75 + Constants.endowment1 +  p2.demand_shock
-            p3.yeild = p3.effort_amount + p1.effort_amount*0.25 + Constants.endowment2 +  p3.demand_shock
-            p4.yeild = p4.effort_amount + p2.effort_amount*0.25 + Constants.endowment2 +  p4.demand_shock
+
+            p1.yeild = p1.effort_amount*0.75 + p1.endowment +  p1.demand_shock
+            p2.yeild = p2.effort_amount*0.75 + p2.endowment +  p2.demand_shock
+            p3.yeild = p3.effort_amount + p1.effort_amount*0.25 + p3.endowment +  p3.demand_shock
+            p4.yeild = p4.effort_amount + p2.effort_amount*0.25 + p4.endowment +  p4.demand_shock
 
             team1_yeild = min(p1.yeild,p3.yeild)
             team2_yeild = min(p2.yeild,p4.yeild)
@@ -111,11 +114,15 @@ class Group(BaseGroup):
             p3.demand_shock = random.uniform(-50,50)
             p4.demand_shock = random.uniform(-50,50)
 
+            p1.endowment = 40
+            p2.endowment = 40
+            p3.endowment = 0
+            p4.endowment = 0
 
-            p1.yeild = p1.effort_amount*0.75 + Constants.endowment1 +  p1.demand_shock
-            p2.yeild = p2.effort_amount*0.75 + Constants.endowment1 +  p2.demand_shock
-            p3.yeild = p3.effort_amount + p2.effort_amount*0.25 + Constants.endowment2 +  p3.demand_shock 
-            p4.yeild = p4.effort_amount + p1.effort_amount*0.25 + Constants.endowment2 +  p4.demand_shock 
+            p1.yeild = p1.effort_amount*0.75 + p1.endowment +  p1.demand_shock
+            p2.yeild = p2.effort_amount*0.75 + p2.endowment +  p2.demand_shock
+            p3.yeild = p3.effort_amount + p2.effort_amount*0.25 + p3.endowment +  p3.demand_shock 
+            p4.yeild = p4.effort_amount + p1.effort_amount*0.25 + p4.endowment +  p4.demand_shock 
             
             team1_yeild = min(p1.yeild,p4.yeild)
             team2_yeild = min(p2.yeild,p3.yeild)
@@ -162,8 +169,9 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     effort_amount = models.IntegerField(min=0, max=100)
-    demand_shock = models.FloatField(initial=0)
     effort_sharing_amount = models.FloatField(initial=0)
+    demand_shock = models.FloatField(initial=0)
+    endowment =  models.IntegerField(initial=0)
     yeild = models.FloatField(initial=0)
 
     team = models.IntegerField(initial=0)
