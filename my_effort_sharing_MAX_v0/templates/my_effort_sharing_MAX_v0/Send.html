@@ -7,32 +7,38 @@
 
 {% block content %}
 
+
 {% if player.id_in_group == 1 or player.id_in_group == 2 %}
 
-    <p>
-    <font size="5"><b>あなたはタイプ１です。</b></font><br>
-    （あなたの成果には４０点が追加され、チームメンバーには点数の追加はありません。）<br>
-    </p>
-    <p>
-    あなたは {{Constants.max_effort}}まで努力できます。
-    </p>
+<p>
+<font size="5"><b>あなたはタイプ１です。</b></font><br>
+<p>
+努力量を [0~100(半角で入力)の整数]で入力してください。
+</p>
+   
+<p>
+報酬の決定方法に不安がある方は、以下の詳細をご覧ください。   
+</p>
+{% formfield group.effort_amount with label="努力量を[0~100(半角で入力)]の整数で入力" %}
 
-    {% formfield group.effort_amount with label="どれだけ努力を行いますか？" %}
+{% next_button %}
+
 
 {% else %}
 
-    <p>
-    <font size="5"><b>あなたはタイプ２です。</b></font>
-    （あなたの成果には点が追加されず、チームメンバーには４０点が追加されます。）
-    </p>
-    <p>
-    あなたは {{Constants.max_effort}}まで努力できます。
-    </p>
+<p>
+<font size="5"><b>あなたはタイプ２です。</b></font><br>
+努力量を[0~100(半角で入力)の整数]で入力してください。<br>
+</p>
 
-    {% formfield group.effort_amount with label="どれだけ努力を行いますか？" %}
+<p>
+報酬の決定方法に不安がある方は、以下の詳細をご覧ください。   
+</p>
+
+{% formfield group.effort_amount with label="努力量を[0~100(半角で入力)]の整数で入力" %}
 
 
-    {% next_button %}
+{% next_button %}
 
 {% endif %}
 

@@ -7,29 +7,42 @@
 
 {% block content %}
 
-    {% include 'my_effort_sharing_MAX_v25/Instructions.html' %}
-
 {% if player.id_in_group == 1 or player.id_in_group == 2 %}
 
     <p>
-    あなたは {{Constants.max_effort}}まで努力できます。<br>
-    またあなたの結果には、メンバーの努力量のうち25%が追加されます。
+    <font size="5"><b>あなたはタイプ１です。</b></font><br>
+    <p>
+    努力量を [0~100(半角で入力)の整数]で入力してください。
     </p>
+       
+    <p>
+    報酬の決定方法に不安がある方は、以下の詳細をご覧ください。   
+    </p>
+    {% formfield group.effort_amount with label="努力量を[0~100(半角で入力)]の整数で入力" %}
+    
+    {% next_button %}
 
-    {% formfield group.effort_amount with label="どれだけ努力を行いますか？" %}
 
 {% else %}
 
     <p>
-    あなたは {{Constants.max_effort}}まで努力できます。<br>
-    またあなたの努力のうち、25%はメンバーにシェアされます。
+    <font size="5"><b>あなたはタイプ２です。</b></font><br>
+    努力量を[0~100(半角で入力)の整数]で入力してください。<br>
     </p>
+   
+    <p>
+    報酬の決定方法に不安がある方は、以下の詳細をご覧ください。   
+    </p>
+    
+    {% formfield group.effort_amount with label="努力量を[0~100(半角で入力)]の整数で入力" %}
+    
+    
+    {% next_button %}
 
-    {% formfield group.effort_amount with label="どれだけ努力を行いますか？" %}
 
 {% endif %}
 
-    {% next_button %}
+{% include 'my_effort_sharing_MAX_v25/Instructions.html' %}
 
 {% endblock %}
 </html>

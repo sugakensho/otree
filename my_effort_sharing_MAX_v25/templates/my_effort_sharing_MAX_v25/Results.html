@@ -5,48 +5,21 @@
     Page title
 {% endblock %}
 
+
 {% block content %}
 
-{% if player.id_in_group == 1 or player.id_in_group == 2 %}
-
 <p>
-    あなたはこの競争で {{ player.effort_amount }}だけ努力を行いました．<br>
-    あなたのチームメイトはプレイヤー{{ player.team_member }}さんで、<br>
-    彼（彼女）の成果（シェアした分を除く）は{{　player.team_members_yeild }}でした。<br>
-    <br>
-    あなたはチームメンバーから{{ player.effort_sharing_amount }}分努力をシェアしてもらいました。<br>
-    結果あなたの成果の合計は{{ player.yeild }}でした。<br>
-    <br>
-    報酬として {{ player.payoff }}を貰いました．<br>
+    あなたは今回のラウンドで努力量を<font size="6">{{ player.effort_amount }}</font> 入力しました．<br>
+    結果あなたの成果は<font size="6">{{player.yeild|floatformat}}</font>でした。
+
+    あなたのチームメイトはプレイヤーの成果は<font size="6">{{ player.team_members_yeild|floatformat }}</font>でした。<br>
+    報酬として <font size="6">{{ player.payoff }}</font>を貰いました．<br>
 </p>
 
 <p>
-    あなたはこの競争で合計 {{participant.payoff}} の報酬を貰っています．
+    あなたはこの競争で合計 <font size="6">{{participant.payoff}}</font> の報酬を貰いました．
 </p>
 
-{% else %}
-
-<p>
-    あなたはこの競争で {{ player.effort_amount }}だけ努力を行いました．<br>
-    あなたのチームメイトはプレイヤー{{ player.team_member }}さんで、<br>
-    彼（彼女）の成果（シェアした分を含む）は{{　player.team_members_yeild }}でした。<br>
-    <br>
-    あなたはチームメンバーに{{ player.effort_sharing_amount }}分努力をシェアしました。<br>
-    結果あなたの成果の合計は{{ player.yeild }}でした。<br>
-    <br>
-    報酬として {{ player.payoff }}を貰いました．<br>
-</p>
-
-<p>
-    あなたはこの競争で合計 {{participant.payoff}} の報酬を貰っています．
-</p>
-
-{% endif %}
-
-
-
-{% include 'my_effort_sharing_MAX_v25/Instructions.html' %}
-
-    {% next_button %}
+{% next_button %}
 
 {% endblock %}
